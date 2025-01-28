@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poetsen+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="skills.html">Skills & Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="title-page">
+            <div class="title-container">
+                <svg class="corner corner-top-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L0,0 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <svg class="corner corner-bottom-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L10,10 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <h1 class="maintitle"> 
+                    <span class="typing-text" data-text="Experience."></span></span><span class="cursor"></span>
+                </h1>
+            </div>
+        </section>
+
+        <div class = "experience-divs">
+            <h2>Research Assistant - Colorado School of Mines</h2>
+            <h3>August 2024 - Present</h3>
+            <li>Collaborate with hardware and autonomy team to integrate Robot Operating Systems (ROS) and autonomy algorithms to facilitate a robot tour guide for a campus environment. </li>
+            <li>Optimize robotic navigation and decision-making processes through the implementation of these algorithms. </li>
+            <li>Leverage large language models to translate verbal commands into precise robotic actions. </li>
+            <li>Enhance natural language processing capabilities to improve robot-human interaction. </li>
+        </div>
+
+        <div class = "experience-divs">
+            <h2>AI and Machine Learning Intern - Ricoh</h2>
+            <h3>May 2024 - June 2024</h3>
+            <li>Facilitated a team as Scrum Master to develop a multimodal chatbot in Python using generative AI and semantic search for printer technicians to enable quicker solutions to printer errors. </li>
+            <li>Utilized retrieval augmented generation (RAG) to process diverse documentation (PDFs, websites, images, videos, etc.), extract, chunk, and convert text into vector embeddings for a searchable database used as context for a large language model (LLM). </li>
+            <li>Integrated OpenAI’s GPT-3.5 to generate comprehensive and concise responses from semantic search results to enhance error resolution efficiency. </li>
+        </div>
+
+        <div class = "experience-divs">
+            <h2>Data Analyst Intern - PDC Energy/Chevron</h2>
+            <h3>May 2023 - August 2023</h3>
+            <li>Programmed regression-optimization model for supervised learning in Python to optimize EUR oil numbers. </li>
+            <li>Applied linear regression and random forests models to predict EUR oil forecasts. </li>
+            <li>Increased predicted oil production by ~5% using optimized solution while reducing 30+ hours of work to under 1 hour. </li>
+            <li>Partnered with reservoir engineers to analyze a dataset of 120+ features on well spacing and oil production. </li>
+        </div>
+
+        <div class = "experience-divs">
+            <h2>Administrative Assistant - Colorado School of Mines</h2>
+            <h3>August 2022 - May 2023</h3>
+            <li>Delivered high quality customer service to 350+ first-year students, handling inquiries/issues and managing check-ins. </li>
+            <li>Managed daily desk operations (building access, mail service, office organization, and supply inventory). </li>
+            <li>Utilized software platforms (i.e. StarRez), to assist in departmental processes and administrative tasks. </li>
+            <li>Created and maintained interpersonal relationships with university staff, residents, and other stakeholders. </li>
+        </div>
+        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingText = document.querySelector(".typing-text");
+            const cursor = document.querySelector(".cursor");
+            const text = typingText.getAttribute("data-text");
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    typingText.textContent += text[index];
+                    index++;
+                    setTimeout(type, 50); // Adjust speed (in milliseconds) as needed
+                } else {
+                    cursor.style.animation = "blink 1s step-end infinite"; // Resume blinking after typing is done
+                }
+            }
+
+            type();
+        });
+    </script>
+</body>
+</html>

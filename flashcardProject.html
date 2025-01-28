@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poetsen+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="skills.html">Skills & Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="title-page">
+            <div class="title-container">
+                <svg class="corner corner-top-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L0,0 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <svg class="corner corner-bottom-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L10,10 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <h1 class="maintitle"> Study Cards</h1>
+                <h1><span class="subtitle">Using LLMs.</span><span class="cursor"></span></h1>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingText = document.querySelector(".typing-text");
+            const cursor = document.querySelector(".cursor");
+            const text = typingText.getAttribute("data-text");
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    typingText.textContent += text[index];
+                    index++;
+                    setTimeout(type, 150); // Adjust speed (in milliseconds) as needed
+                } else {
+                    cursor.style.animation = "blink 1s step-end infinite"; // Resume blinking after typing is done
+                }
+            }
+
+            type();
+        });
+    </script>
+</body>
+</html>

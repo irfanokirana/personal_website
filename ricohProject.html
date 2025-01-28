@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poetsen+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="skills.html">Skills & Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="title-page">
+            <div class="title-container">
+                <svg class="corner corner-top-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L0,0 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <svg class="corner corner-bottom-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L10,10 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <h1 class="maintitle"> Generative AI</h1>
+                <h1><span class="subtitle">and Semantic Search.</span><span class="cursor"></span></h1>
+            </div>
+        </section>
+
+        <h2>Introduction</h2>
+
+        <p>The application created in this project utilizes generative AI and semantic search to create a chatbot for users and printer technicians to ask about printer inquiries and find solutions to their problems quickly. This project is in collaboration with Ricoh and the industrial printers they produce. The large industrial printers Ricoh produces often require lengthy and detailed documentation that are difficult to navigate. Having to parse through the documentation to find maintenance and troubleshooting procedures can often take printer technicians several minutes and even hours to do. To speed up turnaround time for these repairs, our team has been assigned with the task to create an application for repair technicians that utilizes semantic search and large language modeling to allow users to easily search up error codes or ask about repair inquiries and receive a clear, concise, and comprehensible answer in under a few seconds. </p>
+
+            <p>The main task for this application is to allow users to provide a question or inquiry to the chatbot and within seconds the chatbot should be able to provide a response. We expect that the chatbot will provide accurate information in just as many words as needed. In other words, the chatbot should keep things concise but include all information needed to answer the users question fully. This application is now multi-modal and includes several new features from previous iterations including supporting speech to text and text to speech capabilities, image to text recognition, and video to text recognition. </p>
+
+            <h2>Project Requirements</h2>
+
+            <h3>Functional Requirements: </h3>
+
+            <p>The functional requirements for this project are split into the front-end requirements and the backend requirements. </p>
+
+            <h4>Front-end requirements:</h4>
+
+            <li>1. The product should include a user interface where printer technicians and other users can directly interact with a chatbot. </li>
+            <li>2. The chatbot should respond quickly and accurately, as well as provide a concise and comprehensive response that can be easily understood by the technicians and be straight to the point. </li>
+            <li>3. The application should be multimodal and support the following features as inputs:
+                - The application also has a speech to text feature so that the user can speak into the microphone to ask a question.
+                - The application supports image and video to text capabilities so users can upload images and videos as a query/input to the chatbot. 
+            </li>
+            <li>4. The application has a text to speech feature that will read the chatbots response aloud to the user </li>
+
+            <h4>Back-end requirements:</h4>
+
+            <li>1. The program should be able to parse any type of file, pdf, html, txt, etc. and store the semantic information. </li>
+            <li>2. The outcome of the semantic search should provide a close match to the user's query. </li>
+            <li>3. A database is used to store semantic information from files. </li>
+            <li>4. Users' questions should be embedded the same way as the files. </li>
+
+            <h2>Model Selection and Training Process</h2>
+
+            <p>For this project, we have used pretrained models. The first is Qdrant’s search algorithm that performs semantic search on the database provided and the user’s query. We decided to use Qdrant because their free trial had the most space to store all of the documentation we needed to store and the upload and search functions were intuitive and quick to use. Should a different database be used, a different search function will also need to be used to perform the semantic search. Although the search function was pre-trained, the semantic search can be optimized by chunking the text differently. Before we turn the text into vector embeddings, we chunk the text into easier to manage pieces. We started out with a simple chunking algorithm, just chunking the text into 1000 character chunks and going through the pdf like that. This method was pretty good, but we kept tweaking it until we hit the number of 5000, which provided the most accurate results. We attempted to make the chunking algorithm more advanced by introducing semantic chunking, where we embed each sentence individually, and compare adjacent sentences. If they reach a certain similarity threshold, then we keep them in the same chunk. This seemed like a good idea, but in practice (either due to the nature of our data or our implementation) it ended up returning much worse results than our simple chunking method. So in the end, we ended up sticking with our simple chunking procedure using the RecursiveTextSplitter function from the langchain library. In the creation of our payloads (the actual text stored with each embedded chunk in the database), we decided to make it the 5000 characters before our chunk, the chunk, and the 5000 characters after our chunk. We found that this gives us the best context around the data we are looking for, without clogging the database with redundant information. For the second large language model that takes the response given by the semantic search algorithm and returns a comprehensive answer to the user we decided to use OpenAI’s GPT 3.5 Turbo API. This LLM is already pre-trained, but we provided a prompt for the model to use. This prompt has been tried, tested, and fixed multiple times to ensure the client will provide the correct format and tone for the response. </p>
+
+            <h2>Integration of RAG with ChatGPT</h2>
+
+            <p>Using the RAG approach relevant documents or pieces of information are first retrieved from a large dataset, and then a generative model uses this retrieved information to produce a coherent and contextually accurate response or output. In this project, vector embeddings of the data provided by Ricoh is placed into a Qdrant database. Once the data is in the database, when a user asks a question, Qdrant’s built-in search() function matches the user’s query embedding with all embeddings in the database. A cosine similarity metric is then used to output the top result, or the result with the highest cosine similarity score. We then put this response into OpenAI’s GPT 3.5 Turbo API in order to come up with a comprehensive response. To do this we provide the open api client with a prompt outlining the format, tone, and details that should be included in the response given to the user. To ensure that the chatbot handles vague or misleading user queries properly we first ensure that the cosine similarity threshold is greater than 0.85. This means that if the user were to input a single letter of “Ricoh printer” that will return a similarity score of 0.85, the chatbot will return a response that asks the user to provide information. Should a user query that is still too vague return a similarity score above 0.85, the prompt given to the openapi client also ensures that there are enough details given in the user’s query for a sufficient response. The prompt for the openapi client has gone through many rounds of edits to ensure GPT 3.5 will handle the input correctly. Further rounds of edits may be necessary </p>
+
+            <h2>Multi Modal Capabilities</h2>
+
+            <p>Outside of simply inputting text into the search box by typing, users have multiple options as inputs. To make the application for accessible to users, the following features have been added to make the application multi-model: </p>
+
+            <h4>Speech to Text:</h4>
+
+            <p>Users can speak into the mic on their divides and their speech will automatically be translated into text in the text field of the application. Should the text be translated incorrectly into the text box, users still have the opportunity to edit their query before submitting and receiving a response. To implement speech to text capabilities, the speechrecognition library is used. In the query_processesor.py script, the speech_to_text function utilizes functions from the speechrecognition library to clean the audio. It then uses Google’s speech recognition function called recognize_google to translate the audio to text. Finally, the function returns this text.</p>
+
+            <h4>Image to Text:</h4>
+
+            <p>Users also have the option to upload images from their device. If the user chooses to take a picture of the error code, for example, they can upload that image and the program will extract the text into the text box on the application. Users can still edit the text should the extraction be slightly incorrect. The image to text recognition works best with screenshots. Photos using a phone camera give varying results and may not work.</p>
+
+            <p>To implement image to text capabilities, the pytesseract and opencv-python (cv2) libraries were used. In the query_processor.py file, two functions were written. The first is extract_text_from_image that takes in the image path and returns the text extracted from the image. Inside that function we call the preprocess_image function that takes the same image path and returns a cleaned, binary image. The preprocess_image function takes the original image, converts it to grayscale, applies a gaussian blur to the image, and uses thresholding to get a binary image that is returned. In the extract_text_from_image function we take the cleaned, preprocessed image and extract the text from it and return it. This function is used in script.js and handled there to put the extracted text in the input text box.</p>
+
+            <h4>Text to Speech:</h4>
+
+            <p>Once the solution to the user's question is given by the chatbot, the user has the option to have the text be read aloud using speech to text functions. The user also has the option to choose the language they would like the text to be read in. The main library used to accomplish this is the translators library. For all inputs, we pass the query through a translation function (we tried detecting the language first and only translating if it was not English, but this took longer even for English queries). This is very simple, and calls the translate_text function from translators, which takes a specified dictionary–and if unspecified, uses Bing–and the language we are translating to, which is always English. It does not need the language that the text is originally in. It then returns the query translated to English, then proceeds with the vector embedding and other steps after getting a query.</p>
+
+
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingText = document.querySelector(".typing-text");
+            const cursor = document.querySelector(".cursor");
+            const text = typingText.getAttribute("data-text");
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    typingText.textContent += text[index];
+                    index++;
+                    setTimeout(type, 150); // Adjust speed (in milliseconds) as needed
+                } else {
+                    cursor.style.animation = "blink 1s step-end infinite"; // Resume blinking after typing is done
+                }
+            }
+
+            type();
+        });
+    </script>
+</body>
+</html>

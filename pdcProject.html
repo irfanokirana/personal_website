@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poetsen+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="skills.html">Skills & Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="title-page">
+            <div class="title-container">
+                <svg class="corner corner-top-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L0,0 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <svg class="corner corner-bottom-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L10,10 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <h1 class="maintitle"> Oil Product</h1>
+                <h1><span class="subtitle">Optimization.</span><span class="cursor"></span></h1>
+            </div>
+        </section>
+
+    
+        <h2>Introduction</h2>
+
+        <p>During my internship at PDC Energy, I was tasked with analyzing a 50-year dataset of oil production levels to identify key factors driving production increases. Collaborating with the reservoir engineering team, who had limited experience with data analysis and machine learning, I independently applied my classroom knowledge and self-guided study to develop effective analytical strategies. Although I received minimal guidance in data science, my supervisor provided invaluable insights into the oil and gas industry. To interpret the dataset effectively, I deepened my understanding of oil drilling and production processes, enabling me to recognize the significance of various features and values within the data. </p>
+        
+        <h2>Project Description</h2>
+        
+        <p>The dataset contained over 120 features and more than 50,000 data samples collected over many years. The initial step in tackling this problem was data preprocessing. I began by cleaning the data, removing null or empty values, and normalizing certain columns to facilitate analysis. Regularization was also applied to improve accuracy. </p>
+        
+        <p>After cleaning, the data was split into an 80% training set and a 20% testing set. I created visualizations to assess which model and features would be most useful in predicting oil production. To identify the most significant features, I trained a series of single-feature models, examining the coefficients to determine which features had the greatest impact. Many features displayed similar trends with respect to the target variable, so I retained only one from each highly correlated group for the final analysis. </p>
+        
+        <p>Through this process, I observed a clear linear relationship between the selected features and the target variable, leading me to train a Multiple Linear Regression (MLR) model on the training set. While MLR results were promising, they did not fully meet our accuracy threshold. I then applied a Random Forest model, which demonstrated lower bias and variance. This model, trained with 20 of the most impactful features from the original set, achieved strong results with an R-squared value of 0.83 and a low mean squared error. </p>
+        
+        <p>To further enhance the predictive power, I went beyond the initial requirements, using machine learning techniques to hyper-tune parameters for optimal oil production. We ultimately selected IBM's regression optimization tool to simulate scenarios that could maximize output, achieving insights beyond our initial objectives. </p>
+        
+        <h2>Conclusions</h2>
+        
+        <p>At the end of my internship, I delivered a presentation on my findings to a group of oil and gas engineers, senior management, and fellow interns. Recognizing that many attendees had limited familiarity with machine learning, I took the opportunity to explain the techniques and methodologies I used to reach my conclusions. In many ways, this internship felt like a collaborative partnership—I provided support to the reservoir engineering team in making data-driven predictions about oil production, while gaining valuable insights into the oil and gas industry myself. </p>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingText = document.querySelector(".typing-text");
+            const cursor = document.querySelector(".cursor");
+            const text = typingText.getAttribute("data-text");
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    typingText.textContent += text[index];
+                    index++;
+                    setTimeout(type, 150); // Adjust speed (in milliseconds) as needed
+                } else {
+                    cursor.style.animation = "blink 1s step-end infinite"; // Resume blinking after typing is done
+                }
+            }
+
+            type();
+        });
+    </script>
+</body>
+</html>

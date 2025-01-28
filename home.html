@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poetsen+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirana's Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="skills.html">Skills & Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="title-page">
+            <div class="title-container">
+                <svg class="corner corner-top-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L0,0 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <svg class="corner corner-bottom-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L10,10 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <!-- <svg class="bracket bracket-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 100">
+                    <path d="M10,0 L0,0 L0,100 L10,100" stroke="#213555" stroke-width="3" fill="none" />
+                </svg> -->
+                <h1 class="maintitle"> 
+                    <span class="typing-text" data-text="Hi! I'm Kirana -"></span>
+                    
+                </h1>
+                <h1 class="subtitle">
+                    <span class="typing-text" data-text="I'm a Data Analyst."></span><span class="cursor"></span>
+                </h1>
+                
+                <!-- <svg class="bracket bracket-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 100">
+                    <path d="M0,0 L10,0 L10,100 L0,100" stroke="#213555" stroke-width="3" fill="none" />
+                </svg> -->
+            </div>
+        </section>
+        
+        <section class="introduction">
+        <div class="about-me">
+            <h2>About Me</h2>
+            <p>I'm currently pursuing my Master’s degree in Computer Science at the Colorado School of Mines, building on a solid foundation from my Bachelor’s in Computer Science with a focus on data science. My academic and professional journey has been driven by a passion for exploring the frontiers of technology, with hands-on experience in machine learning and generative AI. I’ve contributed to diverse projects, from developing an interactive chatbot to deploying large language models on robotic platforms like a robot dog.
+
+                Originally from Denver, Colorado, I’m also deeply connected to the outdoors. I’ve tackled 10 of Colorado’s famed fourteeners and am an enthusiastic snowboarder—firmly in the camp that snowboarders are cooler than skiers! Balancing my tech life with a full house, I’m a full-time student and a part-time “mom” to my two cats.
+            </p>
+        </div>
+        <div class="intro-image">
+            <img src="headshot.jpg" alt="image of Kirana Irfano">
+        </div>
+    </section>
+
+    <section class="contact">
+        <h2>Contact</h2>
+        <section class="contact-info">
+            <div class="email">
+                <a href="mailto:irfanokirana@gmail.com">Email</a>
+            </div>
+            <div class="linkedin">
+                <a href="https://www.linkedin.com/in/kiranairfano" target="_blank">LinkedIn</a>
+            </div>
+            <div class="github">
+                <a href="https://github.com/irfanokirana" target="_blank">Github</a>
+            </div>
+            <div class="resume">
+                <a href="resume.pdf" target="_blank">Resume/CV</a>
+            </div>
+    </section>
+    </section>
+        
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingElements = document.querySelectorAll(".typing-text"); // Select all text spans
+            const cursor = document.querySelector(".cursor");
+            let currentElementIndex = 0; // Track the current element being typed
+            let currentCharIndex = 0; // Track the current character in the text
+
+            function type() {
+                if (currentElementIndex < typingElements.length) {
+                    const currentElement = typingElements[currentElementIndex];
+                    const text = currentElement.getAttribute("data-text"); // Get the text for the current span
+
+                    if (currentCharIndex < text.length) {
+                        currentElement.textContent += text[currentCharIndex]; // Add one character at a time
+                        currentCharIndex++;
+                        setTimeout(type, 50); // Adjust typing speed
+                    } else {
+                        // Finish typing the current element
+                        currentCharIndex = 0; // Reset for the next element
+                        currentElementIndex++;
+                        setTimeout(type, 50); // Add a delay before starting the next line
+                    }
+                } else {
+                    // Typing is complete
+                    cursor.style.animation = "blink 1s step-end infinite"; // Ensure cursor blinks
+                }
+            }
+
+            type(); // Start the typing effect
+        });
+    </script>
+</body>
+</html>

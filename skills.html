@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poetsen+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills and Education - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="skills.html">Skills & Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="title-page">
+            <div class="title-container">
+                <svg class="corner corner-top-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L0,0 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <svg class="corner corner-bottom-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L10,10 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <h1 class="maintitle"> 
+                    <span class="typing-text" data-text="Skills and"></span>
+                    <br />
+                </h1>
+                <h1 class="subtitle">
+                    <span class="typing-text" data-text="Education."></span></span>
+                    <span class="cursor"></span>
+                </h1>
+                
+            </div>
+        </section>
+        <section class="education">
+            <h2>Education</h2>
+            <div class="education-columns">                
+                <p>M.Sc. Computer Science</p>
+                    <ul>
+                        <li>Expected May 2025 - GPA: 3.9</li>
+                        <li>Colorado School of Mines</li>
+                    </ul>
+                <p>B.Sc. Computer Science - Data Science Specialty</p>
+                    <ul>
+                        <li>May 2024 - GPA: 3.9</li>
+                        <li>Colorado School of Mines</li>
+                    </ul>
+            </div>
+        </section>
+        <h2>Skills</h2>
+        <section class="technical-skills">
+                <div class="programming-languages">
+                    <h3>Programming Languages</h3>
+                    <p>Python, SQL, C++, Javascript, Java, HTML, CSS, OCaml, Lisp, Scala</p>
+                </div>
+                <div class="machine-learning">
+                    <h3>Machine Learning</h3>
+                    <p>Numpy, Scikit-learn, Tenserflow, PyTorch, OpenCV</p>
+                </div>
+                <div class="data-analysis">
+                    <h3>Data Analysis</h3>
+                    <p>Pandas, Matplotlib, Excel, R, Seaborn</p>
+                </div>
+                <div class="database-management">
+                    <h3>Database Management</h3>
+                    <p>SQL, Database Design, Relational Databases, NoSQL Databases</p>
+                </div>
+                <div class="software-engineering">
+                    <h3>Software Engineering</h3>
+                    <p>Git, Linux, BASH, Agile, Object-Oriented Design, Test-Driven Development</p>
+                </div>
+                <div class="collaboration">
+                    <h3>Collaboration</h3>
+                    <p>Scrum, Git version control, Code Review, Peer programming, Jira, Trello, Technical Documentation</p>
+                </div>
+                <div class="languages">
+                    <h3>Languages</h3>
+                    <p>English, Indonesian, Spanish, German, Arabic</p>
+                </div>
+        </section>
+
+        <section class="coursework">
+            <h2>Coursework</h2>
+            <div class="columns">
+                <ul>
+                    <li>Advanced Artificial Intelligence</li>
+                    <li>Advanced Computer Architecture</li>
+                    <li>Advanced Data Science</li>
+                    <li>Advanced Elements of Games and Game Development</li>
+                    <li>Advanced Machine Learning</li>
+                    <li>Algorithms</li>
+                    <li>Artificial Intelligence</li>
+                    <li>Bioinformatics</li>
+                </ul>
+                <ul>
+                    <li>Computer Organization</li>
+                    <li>Computer Vision</li>
+                    <li>Data Science</li>
+                    <li>Data Structures</li>
+                    <li>Database Management</li>
+                    <li>Discrete Math</li>
+                    <li>Introduction to Cryptography</li>
+                    <li>Introduction to Machine Learning</li>
+                    <li>Introduction to Mathematical Statistics</li>
+                </ul>
+                <ul>
+                    <li>Introduction to Probability</li>
+                    <li>Linear Algebra</li>
+                    <li>Multivariate Analysis</li>
+                    <li>Operating Systems</li>
+                    <li>Programming Languages</li>
+                    <li>Software Engineering</li>
+                    <li>Statistical Modeling</li>
+                    <li>Theory of Computation</li>
+                    <li>Quantum Programming</li>
+                </ul>
+            </div>
+            <ul>
+                
+                
+                
+                
+            </ul>
+        </section>
+
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingElements = document.querySelectorAll(".typing-text"); // Select all text spans
+            const cursor = document.querySelector(".cursor");
+            let currentElementIndex = 0; // Track the current element being typed
+            let currentCharIndex = 0; // Track the current character in the text
+
+            function type() {
+                if (currentElementIndex < typingElements.length) {
+                    const currentElement = typingElements[currentElementIndex];
+                    const text = currentElement.getAttribute("data-text"); // Get the text for the current span
+
+                    if (currentCharIndex < text.length) {
+                        currentElement.textContent += text[currentCharIndex]; // Add one character at a time
+                        currentCharIndex++;
+                        setTimeout(type, 50); // Adjust typing speed
+                    } else {
+                        // Finish typing the current element
+                        currentCharIndex = 0; // Reset for the next element
+                        currentElementIndex++;
+                        setTimeout(type, 50); // Add a delay before starting the next line
+                    }
+                } else {
+                    // Typing is complete
+                    cursor.style.animation = "blink 1s step-end infinite"; // Ensure cursor blinks
+                }
+            }
+
+            type(); // Start the typing effect
+        });
+    </script>
+</body>
+</html>

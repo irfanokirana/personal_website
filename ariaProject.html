@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poetsen+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Personal Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="skills.html">Skills & Education</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="title-page">
+            <div class="title-container">
+                <svg class="corner corner-top-left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L0,0 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <svg class="corner corner-bottom-right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10">
+                    <path d="M0,10 L10,10 L10,0" stroke="#213555" stroke-width="2" fill="none" />
+                </svg>
+                <h1 class="maintitle"> Large Language</h1>
+                <h1><span class="subtitle">Modeling in Robotics.</span><span class="cursor"></span></h1>
+            </div>
+        </section>
+
+        <h2>Project Description</h2>
+
+        <p>This project was conducted in collaboration with Aria Labs Robotics at the Colorado School of Mines. The goal was to develop a robotic dog integrated with AI models to function as a campus tour guide. This project leverages OpenAI APIs, voice recognition technologies, and robust integration strategies to provide an interactive and intelligent user experience. </p>
+        
+        <p>The program processes voice commands using a combination of OpenAI’s Whisper API for speech-to-text transcription and the `openwakeword` library for wake word detection. The wake word detection system is designed to recognize specific phrases such as “spot” or “hey_spot” to initiate recording, and “please” or “go” to end recording. This streamlined process ensures that the robot listens only when commanded, optimizing system efficiency and user interaction. </p>
+        
+        <p>At the core of the project is OpenAI’s Assistant API, which serves as the robot’s ‘brain.’ The program incorporates a custom `Assistant` class to encapsulate the API’s functionality. This class is initialized with tools such as `file_search` and `function`, enabling the assistant to reference essential data and execute robot-specific actions. The `file_search` tool allows the assistant to access a JSON file containing the name, GPS coordinates, and orientation data for each campus location, while the `function` tool specifies callable actions for the robot. </p>
+        
+        <p>Once a voice command is transcribed by Whisper, it is sent to the Assistant API, which analyzes the input to determine the appropriate function call or reference from the provided files. For example, if a user asks the robot to navigate to a specific location, the assistant retrieves the relevant GPS and orientation data from the JSON file and generates a function call to guide the robot accordingly. Simultaneously, the assistant generates a verbal response, which is converted to speech using OpenAI’s text-to-speech models and played through the robot’s speakers. The system is designed to emulate the demeanor of a knowledgeable and friendly tour guide, enhancing user engagement. </p>
+        
+        <p>This project represents a significant step toward creating autonomous, AI-driven robotic systems capable of seamlessly interacting with humans in real-world environments. By combining advanced voice recognition, AI reasoning, and robotics, the program enables an engaging, efficient, and informative campus tour experience. </p>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const typingText = document.querySelector(".typing-text");
+            const cursor = document.querySelector(".cursor");
+            const text = typingText.getAttribute("data-text");
+            let index = 0;
+
+            function type() {
+                if (index < text.length) {
+                    typingText.textContent += text[index];
+                    index++;
+                    setTimeout(type, 150); // Adjust speed (in milliseconds) as needed
+                } else {
+                    cursor.style.animation = "blink 1s step-end infinite"; // Resume blinking after typing is done
+                }
+            }
+
+            type();
+        });
+    </script>
+</body>
+</html>

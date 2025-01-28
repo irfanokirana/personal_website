@@ -1,0 +1,641 @@
+/* FONTS */
+.poetsen-one-regular {
+    font-family: "Poetsen One", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.fredoka-paragraph {
+  font-family: "Fredoka", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+
+.source-code-pro-titles {
+    font-family: "Source Code Pro", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.roboto-mono-paragraph {
+    font-family: "Roboto Mono", serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+  
+
+/* GENERAL FORMATTING */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #F5EFE7;
+}
+
+h1 {
+    color: #213555;
+    text-align: center;
+    margin-top: 20px;
+    /* font-family: "Poetsen One", serif; */
+    font-family: "Source Code Pro", serif;
+    font-size: 80px;
+
+}
+
+h2 {
+    color: #213555;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Source Code Pro", serif;
+    font-size: 40px;
+
+}
+
+h3 {
+    color: #213555;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Roboto Mono", serif;
+    font-size: 30px;
+
+}
+
+h4 {
+    color: #213555;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Roboto Mono", serif;
+    font-size: 20px;
+
+}
+
+p {
+    color: #213555;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Roboto Mono", serif;
+    font-size: 20px; 
+}
+
+li {
+    color: #213555;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Roboto Mono", serif;
+    font-size: 20px; 
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #3E5879;
+}
+
+/* NAVIGATION BAR */
+
+nav {
+    background-color: #F5EFE7;
+    color: #3E5879;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: "Fredoka", serif;
+    font-size: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #3E5879;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: rgba(62, 88, 121, 0.5); 
+    color: #3E5879; 
+    border-radius: 5px;
+}
+
+/* HOME */
+
+.title-page {
+    display: flex;
+    flex-direction: column;  /* Stack the h1 elements vertically */
+    justify-content: center;
+    align-items: center;    /* Center the section itself */
+    height: 100vh;          /* Optional: Makes it fill the viewport height */
+    overflow: hidden;
+    position: relative;
+}
+
+.title-container {
+    position: relative;
+    display: inline-block; /* Shrinks the container to the size of the title content */
+    padding: 2rem; /* Adjust padding to create space around the text */
+    text-align: center;
+}
+
+.subtitle {
+    color: #3E5879;
+    margin-top: 0px;
+    text-align: left;
+}
+
+.maintitle {
+    color: #213555;
+    margin-bottom: 0px;
+    text-align: left;
+    white-space: nowrap; /* Prevent line wrapping for typing effect */
+    overflow: hidden;    /* Hide overflowing text */
+}
+
+/* Cursor Styling */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1em; /* Match the height of the text */
+    background-color: #3E5879;
+    margin-left: 5px;
+    opacity: 0;
+    animation: blink 1s step-end infinite; /* Blinking animation */
+    animation-delay: 1s; 
+}
+
+.corner {
+    position: absolute;
+    width: 100px; /* Fixed size for the corner brackets */
+    height: 100px;
+    animation-duration: 1.25s; /* Duration of animation */
+    animation-timing-function: ease-in-out; /* Smooth easing */
+    animation-fill-mode: forwards; /* Keeps the final state */
+}
+
+.corner-top-left {
+    /* top: 0;
+    left: 0;
+    transform: translate(-50%, -50%); */
+    animation-name: moveTopLeft;
+}
+
+.corner-bottom-right {
+    /* bottom: 0;
+    right: 0;
+    transform: translate(50%, 50%); */
+    animation-name: moveBottomRight;
+}
+
+/* Title Text Animation */
+.maintitle, .subtitle {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out 0.5s forwards; /* Starts fading in after 1s */
+}
+
+/* Styling for Brackets */
+.bracket {
+    position: absolute;
+    top: 0;
+    height: 100%; /* Span the height of the section */
+    width: 40px;  /* Thickness of the brackets */
+    animation: fadeIn 1s ease-in-out;
+}
+    
+.bracket-left {
+    left: 0;
+    animation: moveLeft 1s ease-out forwards;
+}
+
+.bracket-right {
+    right: 0;
+    animation: moveRight 1s ease-out forwards;
+}
+
+/* Keyframes for Corner Animations */
+@keyframes moveTopLeft {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        top: 0;
+        left: 0;
+        transform: translate(0, 0);
+    }
+}
+
+@keyframes moveBottomRight {
+    0% {
+        bottom: 50%;
+        right: 50%;
+        transform: translate(50%, 50%);
+    }
+    100% {
+        bottom: 0;
+        right: 0;
+        transform: translate(0, 0);
+    }
+}
+
+/* Keyframes for Bracket Animations */
+@keyframes moveRight {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        top: 50%;
+        left: 97%;
+        transform: translate(0, -50%);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        top: 50%;
+        left: 0; 
+        transform: translate(0, -50%); 
+    }
+}
+
+/* Blinking Animation */
+@keyframes blink {
+    0%, 50% {
+        opacity: 1;
+    }
+    50.01%, 100% {
+        opacity: 0;
+    }
+}
+
+/* Fade Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.introduction {
+    display: flex; 
+    justify-content: center; /* Centers the entire content horizontally */
+    align-items: center;  
+    gap: 20px; /* Adds spacing between the about-me box and the image */
+    padding: 20px;
+}
+
+.about-me {
+    max-width: 675px; /* Matches the image's width */
+    width: 100%; /* Allows scaling on smaller screens */
+    background-color: #D8C4B6;
+    border-radius: 20px;
+    padding: 20px; /* Adds padding inside the box */
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.about-me h2 {
+    color: #3E5879;
+    margin-top: 20px;
+    font-family: "Source Code Pro", serif;
+    font-size: 40px;
+}
+
+.intro-image img {
+    max-width: 400px; /* Matches the box width */
+    width: 100%; /* Makes it responsive */
+    height: auto;  
+    border-radius: 20px;
+}
+
+.contact {
+    flex: 1;
+    /* background-color: #3E5879; */
+    margin: 50px;
+    border-radius: 20px;
+}
+
+.contact h2{
+    color: #213555;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Source Code Pro", serif;
+    font-size: 40px;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 0px;
+}
+
+.contact-info {
+    display: flex; /* Use flexbox for centering */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: center; /* Center the content horizontally */
+    gap: 10px; /* Reduce the gap between sections */
+    padding: 20px;
+}
+
+.contact-info div {
+    background-color: #3E5879; 
+    border-radius: 10px;
+    width: 200px; 
+    height: 80px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; 
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for better visuals */
+}
+
+.contact-info a {
+    color: #D8C4B6;
+    font-family: "Roboto Mono", serif;
+    font-size: 20px;
+    padding: 10px 10px 10px 0px;
+    margin-bottom: 5px;
+}
+
+.contact-info p {
+    color: #D8C4B6;
+    font-family: "Roboto Mono", serif;
+    font-size: 15px;
+    padding: 0px 10px 10px 10px;
+    margin-top: 0;
+}
+
+/* SKILLS AND EDUCATION */
+
+.education {
+    width: 600px; /* Set a fixed width */
+    margin: 50px auto; /* Center the box horizontally */
+    background-color: #3E5879;
+    /* opacity: 60%; */
+    /* background-color: rgba(62, 88, 121, 0.6); */
+    border-radius: 20px;
+    padding: 20px; /* Add spacing inside the box */
+}
+
+.education h2 {
+    color: #D8C4B6;
+    text-align: center;
+    margin-top: 10px;
+    font-family: "Source Code Pro", serif;
+    font-size: 40px;
+}
+
+.education p {
+    text-align: left;
+    font-family: "Roboto Mono", serif;
+    font-size: 25px;
+    color: #F5EFE7;
+    padding: 0px 0px 5px 10px;
+    margin: 0;
+}
+
+.education li {
+    color: #F5EFE7;
+    font-family: "Roboto Mono", serif;
+    font-size: 20px;
+    padding: 2px 20px 10px 10px;
+    text-align: left;
+    list-style: square; 
+}
+
+.education-columns {
+    display: flex;
+    flex-direction: column; 
+    gap: 10px; 
+    padding: px 20px;
+}
+
+.technical-skills {
+    display: flex; /* Use flexbox for centering */
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: center; /* Center the content horizontally */
+    gap: 10px; /* Reduce the gap between sections */
+    padding: 20px;
+}
+
+.technical-skills div {
+    background-color: #D8C4B6; 
+    border-radius: 10px;
+    width: 250px; 
+    height: 150px; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; 
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  */ /* Optional shadow for better visuals */
+}
+
+.technical-skills h3 {
+    color: #3E5879;
+    font-family: "Roboto Mono", serif;
+    font-size: 20px;
+    padding: 10px 10px 10px 0px;
+    margin-bottom: 10px;
+}
+
+.technical-skills p {
+    color: #3E5879;
+    font-family: "Roboto Mono", serif;
+    font-size: 15px;
+    padding: 0px 10px 10px 10px;
+    margin-top: 0;
+}
+
+.coursework {
+    flex: 1;
+    background-color: #3E5879;
+    margin: 50px;
+    border-radius: 20px;
+}
+
+.coursework h2{
+    color: #D8C4B6;
+    text-align: center;
+    margin-top: 20px;
+    font-family: "Source Code Pro", serif;
+    font-size: 40px;
+    padding-top: 10px;
+
+}
+
+.columns {
+    display: flex;
+    justify-content: space-evenly; 
+    align-items: flex-start;     
+}
+
+.columns ul {
+    list-style: none; 
+    padding: 0;       
+    margin: 0;        
+    width: 30%;       
+}
+
+.columns ul li {
+    margin-bottom: 10px; 
+    color: #F5EFE7;
+    padding: 10px 20px;
+    text-align: center;
+    font-family: "Roboto Mono", serif;
+    font-size: 20px;
+}
+
+
+.exper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.card {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    perspective: 1000px; /* Adds depth for the 3D effect */
+    cursor: pointer;
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hides the back when flipped */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.6s ease;
+}
+
+.card-front {
+    background-color: #D8C4B6;
+    color: #213555;
+}
+
+.card-back {
+    background-color: #3E5879;
+    color: #FFFFFF;
+    transform: rotateY(180deg); /* Initially hide the back */
+}
+
+.card.flipped .card-front {
+    transform: rotateY(180deg); /* Flip to hide the front */
+}
+
+.card.flipped .card-back {
+    transform: rotateY(0); /* Show the back */
+}
+
+/* Projects Home Page */
+
+.project-desc {
+    margin: 50px auto;
+    background-color: #3E5879; 
+    border-radius: 20px;
+    width: 800px; 
+    height: 500px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+
+}
+
+.project-desc h2 {
+    color: #D8C4B6;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 0px;
+    padding-top: 20px;
+}
+
+.project-desc p {
+    color: #D8C4B6;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.experience-divs {
+    margin: 50px auto;
+    background-color: #3E5879; 
+    border-radius: 20px;
+    width: 1000px; 
+    height: 800px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.experience-divs h2 {
+    color: #D8C4B6;
+    width: 800px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+.experience-divs h3 {
+    color: #D8C4B6;
+    width: 800px;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+.experience-divs li {
+    color: #D8C4B6;
+    width: 800px;
+    text-align: left;
+   
+}
+
+
+/* TODO
+*/
